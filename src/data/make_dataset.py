@@ -1,6 +1,8 @@
 # import libraries
 import numpy as np
 import pandas as pd
+import geopandas as gpd
+import geobr
 from geobr import read_state
 
 # import data to pandas dataframe
@@ -36,20 +38,28 @@ df_data["MdaGarantiaFisicaKw"] = (
     df_data["MdaGarantiaFisicaKw"].str.replace(",", ".").astype(float)
 )
 
-# import shapes of brazilian states for later ploting maps
-df_brazlian_states = read_state(code_state="all")
 
-# merge brazilian states using the abreviation of states as key binding
-df_data = pd.merge(
-    df_brazlian_states,
-    df_data,
-    left_on="abbrev_state",
-    right_on="SigUFPrincipal",
-    how="left",
-)
-df_data = df_data.drop(columns=["code_state", "abbrev_state", "code_region"])
+# import shapefiles and convert to geoJSON
+myshpfile = read_state(code_state="all")
+myshpfile.to_file("../../data/processed/all_states.geojson", driver="GeoJSON")
 
-# check null values
-df_data.isnull().any()
 
-df_data.to_pickle("../../data/processed/transformed_data.pkl")
+# # import shapes of brazilian states for later ploting maps
+# df_brazlian_states = read_state(code_state="all")
+
+# # merge brazilian states using the abreviation of states as key binding
+# df_data = pd.merge(
+#     df_brazlian_states,
+#     df_data,
+#     left_on="abbrev_state",
+#     right_on="SigUFPrincipal",
+#     how="left",
+# )
+# df_data = df_data.drop(columns=["code_state", "abbrev_state", "code_region"])
+
+# # check null values
+# df_data.isnull().any()
+
+# df_data.to_pickle("../../data/processed/transformed_data.pkl")
+
+#
