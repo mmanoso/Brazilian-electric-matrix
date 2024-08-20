@@ -47,6 +47,8 @@ myshpfile.to_file(
 )
 
 
-df_data.to_pickle("../../data/processed/transformed_data.pkl")
+df_data.to_pickle(
+    r"C:\Users\Mariano\Documents\Aprendizaje Data Science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\transformed_data.pkl"
+)
 
 #
