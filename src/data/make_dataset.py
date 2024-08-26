@@ -2,12 +2,13 @@
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-import geobr
-from geobr import read_state
+
+# import geobr
+# from geobr import read_state, read_country
 
 # import data to pandas dataframe
 df_raw_data = pd.read_csv(
-    r"C:\Users\Mariano\Documents\Aprendizaje Data Science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\raw\siga-empreendimentos-geracao.csv",
+    r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\raw\siga-empreendimentos-geracao.csv",
     sep=";",
     encoding="iso-8859-1",
 )
@@ -37,18 +38,27 @@ df_data["MdaPotenciaOutorgadaKw"] = (
 df_data["MdaGarantiaFisicaKw"] = (
     df_data["MdaGarantiaFisicaKw"].str.replace(",", ".").astype(float)
 )
-
-
-# import shapefiles and convert to geoJSON
-myshpfile = read_state(code_state="all")
-myshpfile.to_file(
-    r"C:\Users\Mariano\Documents\Aprendizaje Data Science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\all_states.geojson",
-    driver="GeoJSON",
+df_data["NumCoordNEmpreendimento"] = (
+    df_data["NumCoordNEmpreendimento"].str.replace(",", ".").astype(float)
+)
+df_data["NumCoordEEmpreendimento"] = (
+    df_data["NumCoordEEmpreendimento"].str.replace(",", ".").astype(float)
 )
 
+# # import shapefiles and convert to geoJSON
+# myshpfile = read_state(code_state="all")
+# myshpfile.to_file(
+#     r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\all_states.geojson",
+#     driver="GeoJSON",
+# )
+# countryshpfile = read_country(year=2020)
+# countryshpfile.to_file(
+#     r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\brazil_country.geojson",
+#     driver="GeoJSON",
+# )
 
 df_data.to_pickle(
-    r"C:\Users\Mariano\Documents\Aprendizaje Data Science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\transformed_data.pkl"
+    r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\transformed_data.pkl"
 )
 
 #
