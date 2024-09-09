@@ -8,7 +8,7 @@ import geopandas as gpd
 
 # import data to pandas dataframe
 df_raw_data = pd.read_csv(
-    r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\raw\siga-empreendimentos-geracao.csv",
+    r"https://github.com/mmanoso/Brazilian-electric-matrix/blob/main/data/raw/siga-empreendimentos-geracao.csv?raw=true",
     sep=";",
     encoding="iso-8859-1",
 )
@@ -45,6 +45,22 @@ df_data["NumCoordEEmpreendimento"] = (
     df_data["NumCoordEEmpreendimento"].str.replace(",", ".").astype(float)
 )
 
+# change column names to english
+df_data.rename(
+    columns={
+        "DscFaseUsina": "status",
+        "DscOrigemCombustivel": "fuel_origin",
+        "DscFonteCombustivel": "fuel_type",
+        "NomFonteCombustivel": "fuel_type_name",
+        "SigTipoGeracao": "generator_type",
+        "SigUFPrincipal": "states",
+        "NumCoordNEmpreendimento": "latitude",
+        "NumCoordEEmpreendimento": "longitude",
+        "MdaPotenciaFiscalizadaKw": "electric_power_decl",
+        "MdaPotenciaOutorgadaKw": "electric_power_inst",
+    },
+    inplace=True,
+)
 # # import shapefiles and convert to geoJSON
 # myshpfile = read_state(code_state="all")
 # myshpfile.to_file(
@@ -58,7 +74,7 @@ df_data["NumCoordEEmpreendimento"] = (
 # )
 
 df_data.to_pickle(
-    r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\transformed_data.pkl"
+    r"C:\Users\Mariano\Documents\aprendizaje-data-science\repositorio-brazilian-electric-matrix\Brazilian-electric-matrix\data\processed\transformed_data_app.pkl"
 )
 
 #
