@@ -33,3 +33,7 @@ The second page of the dashboard allows the user to see a classification of the 
 The user has a navigation and filter menu which is open by the button on the upper right side of the dashboard. There the user can navigate between the two pages and apply filters to the data to get visuals in different insights, filtering by unique values of different columns of the data.
 
 ![alt text](<reports/figures/Tableau dashboard page 2 menu open.png>)
+
+### The link to the online Tableau application is the following:
+
+https://public.tableau.com/views/ProjectBrazilianelectricmatrixdashboard/DashElectricMatrixAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
