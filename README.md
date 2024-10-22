@@ -23,5 +23,11 @@ https://mmanoso-app-brazil-electric-matrix.streamlit.app/
 
 In this project there is also a Tableau dashboard application like the Streamlit online app. Following the same principle but using another tool for visualization of the data.
 The Tableau application consists of two dashboards to visualize the data. In the first page of the application, it can be visualized the geographic distribution of every electric generator in Brazil by its location points in the map, and a choropleth map to see the values of electric power installed by state. Also, the historical evolution of electric generation can be seen up to July 2024.
+![alt text](<reports/figures/Tableau dashboard page 1 menu open.png>)
 
-![alt text](reports/figures/streamlit-app-electric-matrix-page.png)
+The second page of the dashboard allows the user to see a classification of the electric power installed, by fuel type and related.
+![alt text](<reports/figures/Tableau dashboard page 2.png>)
+
+The user has a navigation and filter menu which is open by the button on the upper right side of the dashboard. There the user can navigate between the two pages and apply filters to the data to get visuals in different insights, filtering by unique values of different columns of the data.
+
+![alt text](<reports/figures/Tableau dashboard page 2 menu open.png>)
